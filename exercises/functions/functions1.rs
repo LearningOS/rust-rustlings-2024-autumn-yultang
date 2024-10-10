@@ -9,5 +9,5 @@ fn main() {
 }
 
 fn call_me() {
-
+    println!("Hello from call_me!");
 }

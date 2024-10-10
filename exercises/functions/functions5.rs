@@ -10,5 +10,7 @@ fn main() {
 }
 
 fn square(num: i32) -> i32 {
-    num * num
+    // num * num
+    // 尝试用另一种方法返回函数值
+    return num * num;
 }

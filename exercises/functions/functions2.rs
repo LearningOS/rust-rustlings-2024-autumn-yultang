@@ -8,6 +8,7 @@ fn main() {
     call_me(3);
 }
 
+// 明确说明num类型为 i32
 fn call_me(num: i32) {
     for i in 0..num {
         println!("Ring! Call number {}", i + 1);

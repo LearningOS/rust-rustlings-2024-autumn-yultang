@@ -8,7 +8,8 @@ fn main() {
     call_me(3);
 }
 
-fn call_me(num: u32) {
+// 修改参数类型为默认类型: i32
+fn call_me(num: i32) {
     for i in 0..num {
         println!("Ring! Call number {}", i + 1);
     }
