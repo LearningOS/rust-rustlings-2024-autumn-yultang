@@ -1,10 +1,7 @@
-/*
-	bfs
-	This problem requires you to implement a basic BFS algorithm
-*/
 
-//I AM NOT DONE
-use std::collections::VecDeque;
+
+
+use std::collections::{VecDeque, HashSet};
 
 // Define a graph
 struct Graph {
@@ -27,14 +24,28 @@ impl Graph {
 
     // Perform a breadth-first search on the graph, return the order of visited nodes
     fn bfs_with_return(&self, start: usize) -> Vec<usize> {
-        
-		//TODO
+        let mut visit_order = vec![]; // 用于记录访问顺序
+        let mut visited = HashSet::new(); // 用于追踪已访问节点
+        let mut queue = VecDeque::new(); // 用于实现队列
 
-        let mut visit_order = vec![];
+        queue.push_back(start); // 将起始节点加入队列
+        visited.insert(start); // 标记起始节点为已访问
+
+        while let Some(current) = queue.pop_front() { // 从队列中取出一个节点
+            visit_order.push(current); // 记录访问顺序
+            
+            // 遍历所有邻接节点
+            for &neighbor in &self.adj[current] {
+                if !visited.contains(&neighbor) { // 如果邻接节点未被访问
+                    visited.insert(neighbor); // 标记为已访问
+                    queue.push_back(neighbor); // 将邻接节点加入队列
+                }
+            }
+        }
+
         visit_order
     }
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -84,4 +95,3 @@ mod tests {
         assert_eq!(visited_order, vec![0]);
     }
 }
-
